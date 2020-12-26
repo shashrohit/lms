@@ -5,20 +5,20 @@
 <table class="table table-striped">
   <thead>
     <tr class="d-flex">
-      <th scope="col" class="col-2">Title</th>
-      <th scope="col" class="col-2">Category</th>
-      <th scope="col" class="col-2">Issued</th>
-      <th scope="col" class="col-2">Issued To</th>
-      <th scope="col" class="col-2">Due Date</th>
+      <th scope="col" class="col-2 text-danger">Title</th>
+      <th scope="col" class="col-2 text-danger">Category</th>
+      <th scope="col" class="col-2 text-danger">Issued</th>
+      <th scope="col" class="col-2 text-danger">Issued To</th>
+      <th scope="col" class="col-2 text-danger">Due Date</th>
     </tr>
   </thead>
   <tbody>
       <tr class="d-flex">
-        <th scope="row" class="col-2">{{ Book.title }}</th>
-        <td class="col-sm-2">{{ Book.category }}</td>
-        <td class="col-sm-2">{{ Book.is_issued }}</td>
-        <td class="col-sm-2">{{ Book.issued_to }}</td>
-        <td class="col-sm-2">{{ Book.due_date }}</td>
+        <th class="col-2">{{ Book.title }}</th>
+        <th class="col-sm-2">{{ Book.category }}</th>
+        <th class="col-sm-2">{{ Book.is_issued }}</th>
+        <th class="col-sm-2">{{ Book.issued_to }}</th>
+        <th class="col-sm-2">{{ Book.due_date }}</th>
       </tr>
   </tbody>
 </table>

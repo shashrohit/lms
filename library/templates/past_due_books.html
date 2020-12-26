@@ -5,19 +5,19 @@
 <table class="table table-striped">
   <thead>
     <tr class="d-flex">
-      <th scope="col" class="col-2">#</th>
-      <th scope="col" class="col-2">Book Title</th>
-        <th scope="col" class="col-2">Issued To</th>
-        <th scope="col" class="col-2">Due Date</th>
+      <th scope="col" class="col-2 text-danger">#</th>
+      <th scope="col" class="col-2 text-danger">Book Title</th>
+        <th scope="col" class="col-2 text-danger">Issued To</th>
+        <th scope="col" class="col-2 text-danger">Due Date</th>
     </tr>
   </thead>
   <tbody>
       {% for book in Books %}
       <tr class="d-flex">
         <th scope="row" class="col-2">{{forloop.counter}}</th>
-        <td class="col-sm-2">{{ book.title }}</td>
-        <td class="col-sm-2">{{ book.issued_to }}</td>
-        <td class="col-sm-2">{{ book.due_date }}</td>
+        <th class="col-sm-2">{{ book.title }}</th>
+        <th class="col-sm-2">{{ book.issued_to }}</th>
+        <th class="col-sm-2">{{ book.due_date }}</th>
       </tr>
   {% endfor %}
   </tbody>
