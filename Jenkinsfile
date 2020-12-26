@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage("SCM"){
             steps{
-                echo "welcome"
+                echo "welcome to pipeline"
             }
         }
     }
