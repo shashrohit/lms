@@ -1,10 +1,9 @@
 pipeline{
-
     agent any
     stages{
-        stage("SCM"){
+        stage("SCM Checkout"){
             steps{
-                echo "welcome to pipeline"
+                git 'https://github.com/shashrohit/lms.git'
             }
         }
     }
