@@ -8,6 +8,8 @@ pipeline{
         }
         stage("Unit Test"){
             steps{
+                sh "echo ${WORKSPACE}"
+                sh "cd C:\Users\SSingh9\.jenkins\workspace\library management system"
                 sh "pytest"
             }
         }
