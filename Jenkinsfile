@@ -8,9 +8,9 @@ pipeline{
         }
         stage("Unit Test"){
             steps{
-                sh "echo ${WORKSPACE}"
-                sh "pwd"
-                sh "pytest"
+                echo "echo ${WORKSPACE}"
+                echo "pwd"
+                bat "pytest"
             }
         }
     }
