@@ -5,7 +5,7 @@ pipeline{
             steps{
                 git 'https://github.com/shashrohit/lms.git'
             }
-        }
+        },
         stage("Unit Test"){
             steps{
                 sh "pytest"
