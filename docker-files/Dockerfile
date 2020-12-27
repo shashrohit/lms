@@ -5,8 +5,7 @@ WORKDIR app
 
 RUN pip install -r requirements.txt
 
-RUN chmod +x start
+RUN chmod +x docker-files/start
+RUN chmod +x docker-files/unit_test
 
 EXPOSE 8000
-
-CMD ["sh", "start"]

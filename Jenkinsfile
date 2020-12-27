@@ -8,8 +8,8 @@ pipeline{
         }
         stage("Unit Test"){
             steps{
-                echo "echo ${WORKSPACE}"
-                echo "pwd"
+                echo "${WORKSPACE}"
+                bat "docker build . -t lms:${BUILD_NUMBER}"
                 bat "pytest"
             }
         }
