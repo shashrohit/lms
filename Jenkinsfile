@@ -9,8 +9,7 @@ pipeline{
         stage("Unit Test"){
             steps{
                 echo "${WORKSPACE}"
-                bat "docker build . -t lms:${BUILD_NUMBER}"
-                bat "pytest"
+                bat "docker-compose -f unit-test.yml up --build"
             }
         }
     }
