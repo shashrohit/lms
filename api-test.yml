@@ -1,10 +1,14 @@
-version: "3"
+version: "3.7"
 services:
-  lms:
+  lms: &lms
     build:
       context: .
       dockerfile: ./docker-files/Dockerfile
     image: lms:latest
+    command: sh -c "./docker-files/start"
+
+  api_tests:
+    << : *lms
     environment:
-      - service_url: http://localhost:8000
-    command: bash -c "./docker-files/start && sleep 10 && ./docker-files/api_test"
+      - service_url=http://lms:8000
+    command: python -m pytest library/api_tests

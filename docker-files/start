@@ -1,9 +1,17 @@
 #!/bin/sh
 
-set -o errexit
-set -o pipefail
-set -o nounset
+set -e
+trap 'catch $? $LINENO' EXIT
+
+catch() {
+  echo "catching!"
+  if [ "$1" != "0" ]; then
+    # error handling goes here
+    echo "Error $1 occurred on $2"
+  fi
+}
 
 python /app/manage.py makemigrations
 python /app/manage.py migrate
 python /app/manage.py runserver 0.0.0.0:8000
+
