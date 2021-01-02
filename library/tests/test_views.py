@@ -1,7 +1,5 @@
 from django.test import TestCase, Client
 from django.urls import reverse
-from library.models import Book
-import json
 
 
 class TestViews(TestCase):
@@ -19,7 +17,7 @@ class TestViews(TestCase):
 
     def test_book_details(self):
         response = self.client.get(self.detail_url)
-        self.assertEquals(response.status_code, 200)
-        self.assertTemplateUsed('book_details1.html')
+        self.assertEquals(response.status_code, 201)
+        self.assertTemplateUsed('book_details.html')
 
 
