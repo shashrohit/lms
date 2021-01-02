@@ -17,7 +17,7 @@ class TestViews(TestCase):
 
     def test_book_details(self):
         response = self.client.get(self.detail_url)
-        self.assertEquals(response.status_code, 200)
+        self.assertEquals(response.status_code, 201)
         self.assertTemplateUsed('book_details.html')
 
 
