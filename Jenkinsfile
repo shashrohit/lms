@@ -6,7 +6,7 @@ pipeline{
                 git 'https://github.com/shashrohit/lms.git'
             }
         }
-        stage("Unit Test"){
+        stage("Unit Tests"){
             steps{
                 echo "${WORKSPACE}"
                 bat "docker-compose -f unit-test.yml up --build"
