@@ -9,6 +9,7 @@ pipeline{
         stage("Unit Tests"){
             steps{
              catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    bat "exit 1"
                     bat "docker-compose -f unit-test.yml up --build"
                 }
             }
