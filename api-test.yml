@@ -11,4 +11,6 @@ services:
     << : *lms
     environment:
       - service_url=http://lms:8000
+    depends_on:
+      - lms
     command: python -m pytest library/api_tests
