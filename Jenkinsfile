@@ -19,7 +19,7 @@ pipeline{
             steps{
                 script{
                     catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                        bat "docker-compose -f api-test.yml up --build --exit-code-from lms"
+                        bat "docker-compose -f api-test.yml up --build --exit-code-from api_tests"
                     }
                 }
             }
