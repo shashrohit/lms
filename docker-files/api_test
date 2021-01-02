@@ -11,4 +11,4 @@ catch() {
   fi
 }
 
-python -m pytest library/unit_tests
+python -m pytest library/api_tests

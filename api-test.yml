@@ -1,0 +1,10 @@
+version: "3"
+services:
+  lms:
+    build:
+      context: .
+      dockerfile: ./docker-files/Dockerfile
+    image: lms:latest
+    environment:
+      - service_url: http://localhost:8000
+    command: bash -c "./docker-files/start && sleep 10 && ./docker-files/api_test"

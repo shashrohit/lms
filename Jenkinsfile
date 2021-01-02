@@ -6,17 +6,25 @@ pipeline{
                 git 'https://github.com/shashrohit/lms.git'
             }
         }
-        stage("Unit Tests"){
+        stage("Unit Test"){
             steps{
                 script{
                     catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                        bat "echo %ERRORLEVEL%"
                         bat "docker-compose -f unit-test.yml up --build --exit-code-from lms"
-                        bat "echo %ERRORLEVEL%"
                     }
                 }
             }
         }
+        stage("API Test"){
+            steps{
+                script{
+                    catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                        bat "docker-compose -f api-test.yml up --build --exit-code-from lms"
+                    }
+                }
+            }
+        }
+
     }
     post {
         always {
