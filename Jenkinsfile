@@ -8,8 +8,9 @@ pipeline{
         }
         stage("Unit Tests"){
             steps{
-                echo "${WORKSPACE}"
-                bat "docker-compose -f unit-test.yml up --build"
+             catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    bat "docker-compose -f unit-test.yml up --build"
+                }
             }
         }
     }
