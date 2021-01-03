@@ -14,5 +14,5 @@ services:
     depends_on:
       - lms
     volumes:
-      - ${WORKSPACE}/api_tests/reports:/app/reports
+      - ${WORKSPACE}/reports/api_tests:/app/reports
     command: sh -c "rm -rf pytest.ini && sleep 5 && python -m pytest library/api_tests --html=reports/index.html --self-contained-html"
