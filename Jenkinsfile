@@ -16,7 +16,7 @@ pipeline{
                 publishHTML (target : [allowMissing: false,
                  alwaysLinkToLastBuild: true,
                  keepAll: true,
-                 reportDir: 'unit_tests/reports',
+                 reportDir: 'reports/unit_tests',
                  reportFiles: 'index.html',
                  reportName: 'Unit Tests Report',
                  reportTitles: 'Unit Tests Report'])
@@ -47,7 +47,7 @@ pipeline{
                 publishHTML (target : [allowMissing: false,
                  alwaysLinkToLastBuild: true,
                  keepAll: true,
-                 reportDir: 'api_tests/reports',
+                 reportDir: 'reports/api_tests',
                  reportFiles: 'index.html',
                  reportName: 'API Tests Report',
                  reportTitles: 'API Tests Report'])
