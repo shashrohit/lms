@@ -3,36 +3,11 @@ from .models import Book
 from django.conf import settings
 from datetime import datetime, timedelta
 
+base_template_name = 'base.html'
+
 
 def index(request):
-    return render(request, 'base.html')
-
-#
-# class BookAddView(CreateView):
-#
-#     template_name = 'add_book.html'
-#     model = Book
-#     fields = ['title', 'category']
-#     success_url = '/'
-#
-
-# class AvailableBooksView(ListView):
-#
-#     model = Book
-#     template_name = 'list_books.html'
-#     context_object_name = 'all_books'
-#
-#     def get_queryset(self):
-#         return Book.objects.all()
-
-
-# class DetailBooksView(DetailView):
-#
-#     template_name = 'book_details.html'
-#     model = Book
-#
-#     def get_queryset(self):
-#         return Book.objects.all()
+    return render(request, base_template_name)
 
 
 def list_available_books(request):
@@ -56,21 +31,21 @@ def add_new_book(request):
         error = "All fields are mandatory"
         context = {"errorMessage": error, "Categories": Book.Category}
     else:
-        book = Book(title=title, category=category)
+        book = Book(title=title, book_category=category)
         book.save()
         context = {}
 
     if error:
         template_name = "add_book.html"
     else:
-        template_name = "base.html"
+        template_name = base_template_name
 
     return render(request, template_name, context)
 
 
 def book_details(request):
-    id = request.GET.get("id")
-    book = Book.objects.filter(pk=id).first()
+    book_id = request.GET.get("id")
+    book = Book.objects.filter(pk=book_id).first()
     context = {"Book": book}
     return render(request, "book_details.html", context)
 
@@ -84,16 +59,16 @@ def issue_book_form(request):
 
 def issue_book(request):
 
-    id = request.POST["book_id"]
+    book_id = request.POST["book_id"]
     user = request.POST["user"]
 
     error = None
-    if any(element in [None, ""] for element in [id, user]):
+    if any(element in [None, ""] for element in [book_id, user]):
         error = "All fields are mandatory"
         books = Book.objects.filter(is_issued=False)
         context = {"errorMessage": error, "Books": books}
     else:
-        book = Book.objects.get(id=id)
+        book = Book.objects.get(id=book_id)
         book.is_issued = True
         book.issued_to = user
         due_date = datetime.today() + timedelta(15)
@@ -104,7 +79,7 @@ def issue_book(request):
     if error:
         template_name = "issue_book.html"
     else:
-        template_name = "base.html"
+        template_name = base_template_name
 
     return render(request, template_name, context)
 
@@ -118,16 +93,16 @@ def return_book_form(request):
 
 def return_book(request):
 
-    id = request.POST["book_id"]
+    book_id = request.POST["book_id"]
 
-    book = Book.objects.get(id=id)
+    book = Book.objects.get(id=book_id)
     book.is_issued = False
     book.issued_to = None
     book.due_date = None
     book.save()
     context = {}
 
-    template_name = "base.html"
+    template_name = base_template_name
 
     return render(request, template_name, context)
 

@@ -1,6 +1,6 @@
 from django.conf.urls import url
-from .views import *
-
+from .views import add_new_book, add_new_book_form, list_available_books, book_details, issue_book, issue_book_form, \
+    index, return_book, return_book_form, past_due_books
 
 urlpatterns = [
 

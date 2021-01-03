@@ -10,7 +10,7 @@ class Book(models.Model):
         ('Mystery', 'Mystery'),
     )
     title = models.CharField(max_length=100, blank=False)
-    category = models.CharField(max_length=20, choices=Category)
+    book_category = models.CharField(max_length=20, choices=Category)
     is_issued = models.BooleanField(default=False, blank=True, null=True)
     issued_to = models.CharField(max_length=30, blank=True, null=True)
     due_date = models.CharField(max_length=30, blank=True, null=True)
