@@ -15,4 +15,4 @@ services:
       - lms
     volumes:
       - ${WORKSPACE}/api_tests/reports:/app/reports
-    command: sh -c "rm -rf pytest.ini && sleep 5 && python -m pytest library/api_tests --html=reports/api_test_report.html --self-contained-html"
+    command: sh -c "rm -rf pytest.ini && sleep 5 && python -m pytest library/api_tests --html=reports/index.html --self-contained-html"

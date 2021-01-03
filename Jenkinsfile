@@ -13,6 +13,13 @@ pipeline{
                         bat "docker-compose -f unit-test.yml up --build --exit-code-from lms"
                     }
                 }
+                publishHTML (target : [allowMissing: false,
+                 alwaysLinkToLastBuild: true,
+                 keepAll: true,
+                 reportDir: 'unit_tests\reports',
+                 reportFiles: 'coverage.html',
+                 reportName: 'Unit Tests Report',
+                 reportTitles: 'Unit Tests Report'])
             }
         }
         stage('Sonarqube') {
@@ -37,6 +44,13 @@ pipeline{
                         bat "docker-compose -f api-test.yml up --build --exit-code-from api_tests"
                     }
                 }
+                publishHTML (target : [allowMissing: false,
+                 alwaysLinkToLastBuild: true,
+                 keepAll: true,
+                 reportDir: 'api_tests\reports',
+                 reportFiles: 'index.html',
+                 reportName: 'API Tests Report',
+                 reportTitles: 'API Tests Report'])
             }
         }
 
