@@ -6,5 +6,5 @@ services:
       dockerfile: ./docker-files/Dockerfile
     image: lms:0.1
     volumes:
-      - ${WORKSPACE}/reports:/app/reports
+      - ${WORKSPACE}/unit_tests/reports:/app/reports
     command: ./docker-files/unit_test
