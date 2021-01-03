@@ -20,8 +20,10 @@ pipeline{
                 scannerHome = tool 'SonarQubeScanner'
             }
             steps {
-                withSonarQubeEnv('sonarqube') {
-                    bat "${scannerHome}/bin/sonar-scanner"
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    withSonarQubeEnv('sonarqube') {
+                        bat "${scannerHome}/bin/sonar-scanner"
+                    }
                 }
             }
         }
