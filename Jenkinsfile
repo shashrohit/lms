@@ -32,7 +32,7 @@ pipeline{
                         bat "${scannerHome}/bin/sonar-scanner"
                     }
                 }
-                timeout(time: 10, unit: 'MINUTES') {
+                timeout(time: 5, unit: 'MINUTES') {
                     waitForQualityGate abortPipeline: true
                 }
             }
